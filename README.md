@@ -20,9 +20,39 @@ So we now are going to utilize computing power of Google Global Infrastructure t
 - Other reason can be some regulatory compliance. Some companies don't allow their data to go outside their country.
 - More secure, as Google has its own personal private network of  fibre optic cables which allows us to transfer data with high speed, low latency and since data wont travel over public internet so its highly secured.
 
-### Projects, Oragnization and API'S
+### Projects, Oragnization and API'S:
+
 - For every service in GCP, google has one API. Before using any service we have to enable that API. Basically every service is one program/application for which google has given some interface. So its called API and user always connect to API. Most of the API's are disabled. So we have to manually enable the API of the service which we want to work on.
 -  3 ways to connect to API
    1. CLI- using gclooud command on your base laptop console. Also GCP offers one feature to use interactive shell on cloud to run CLI commands directly IN GCP, that is called **Active Cloud shell**. In this they launch one Linux OS behind the scene and they activate command prompt or shell for you where we can run all commands of linux.
-   
-## Google Compute Engine (GCE)
+   2. Web UI of GCP
+   3. SDK- using some app you can connect to API.
+
+- Oragnization is nothing but company name. So normally in a comapny we have many teams (or ENVIRONMENTS), eg DEVELOPER, PRODUCTION, TESTING, etc. Production team is very critical.. give more RAM, CPU, Storage, tight Security. Can't compromise with anything. But in Development environment, can give just one server to test our app. Don't give much  RAM, CPU to this team coz we have to manage billing. So, in GCP we can create different different teams or **Projects** and set quotas/limit on the project. This is a good way of management of resources. So, to use any resource in GCP we have to create a project & associate it with a billing account. By default one project is alreay created for us. So project is a good way to manage resources and set some limits & quotas and its a way to isolate your resources. One click entire project delete and all resources delete.
+
+- Project is always managed inside organization. In one organization your project ID must be unique.
+
+```
+#gcloud projects list   //to see all projects
+
+#gcloud projects --help  // to see what all options they support
+
+#gcloud projects create devproject-1234567890 --name prodproject  // to create project using CLI
+
+#gcloud services list --project devproject-1234567890   // to check how many services(API's) are active in this project
+
+#gcloud services list --available --project devproject-1234567890  // to check all the services available in GCP (active+inactive)
+
+#gcloud services list --available --project devproject-1234567890  | grep compute  // to check if compute service is enabled or not
+
+#gcloud services  enable compute.googleapis.com --project prodproject-1234098765    //enable Compute API from CLI (Billing account must be associated with the project)
+
+```
+## Google Compute Engine (GCE):
+
+- It provides Compute as a Service. Can launch VM's
+
+- Select Machine configuration or Machine type depending upon requirement of app.
+  1. Memory optimized - More RAM
+  2. Compute Optimized - More CPU
+  3. General Purpose - Basic Workload
