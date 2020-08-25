@@ -56,3 +56,13 @@ So we now are going to utilize computing power of Google Global Infrastructure t
   1. Memory optimized - More RAM
   2. Compute Optimized - More CPU
   3. General Purpose - Basic Workload
+  
+- Whatever resource you construct, GCP gives you one command created based on what you have selected. Its  a big command and can be used while writing some kinf of automation scripts.
+Example: To launch one VM in GCP command is:
+```
+gcloud beta compute --project=devproject-123456789 instances create myos1 --zone=us-east1-b --machine-type=n1-standard-1 --subnet=default --network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=479852142392-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --image=centos-7-v20200811 --image-project=centos-cloud --boot-disk-size=20GB --boot-disk-type=pd-standard --boot-disk-device-name=myos1 --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+```
+- For connecting to instance, we need IP, USERNAME & PASSWORD. The network protocol we are going to use to connect to instance is : SSH (for Linux image) and RDP (for Windows image). IP--> external IP, Username -->root, password--> key based authentication. In GCP, no need to create one key(unlike AWS where key is requred), you can directly login using ssh from browser. In AWS, for some AMI image they provide this.
+
+- Default firewall only allows SSH, RDP, ICMP(Ping). So allow ingress TCP traffiC on port 80 to all the Target instances in the network from anywhere in the world.
+
