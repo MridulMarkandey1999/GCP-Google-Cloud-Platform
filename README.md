@@ -66,3 +66,19 @@ gcloud beta compute --project=devproject-123456789 instances create myos1 --zone
 
 - Default firewall only allows SSH, RDP, ICMP(Ping). So allow ingress TCP traffiC on port 80 to all the Target instances in the network from anywhere in the world.
 
+## Google VPC Network:
+
+- In a company data center, we have labs where we have many devices like servers, routers, switches, dhcp server, Load Balancers. Also we need highly skilled workforce to manage all of them. So a  lot of cost a company have to invest in management of these networking devices. So we get these resources from Cloud leveraging Networking as a service. VPC is a service from GCP which provides Networking as a service.
+
+- When we launch any instance, we need to create a VPC (like company) and inside VPC we need to create a subnet(lab) where we launch our instance. Even if we somehow manage to launch instance without vpc, we don't have a connectivity, and so our clients don't have a connectivity. So its of no use. 
+
+- When you create a new project in GCP, they create a by default VPC which have multiple(24) subnets.
+
+### VPC PEERING:
+
+![](/VPC_peering.jpeg)
+
+ - Consider a scenario where we two projects( dev and prod). Now we have developers in Singapore region and we have Production team in US region.So if dev team wants to retrieve any data from Production team, they can use public IP of the instance and connect through public Internet network. But maybe the data is critical. So public internet is not at all secure and reliable. Sometimes we get less speed , sometimes more speed. So to minimize latency and to increase performance, we can use Google personal internal Fibre optic cable chennel, which is created and maintained by google, which is very fast and reliable in terms of security. So for that we can connect the two VPC's together. This is called **VPC PEERING**.
+- For this we want the NIC(Network Interface Card) to be detached from the VM's and connect it to Subnet in which VM's are running so that the two Subnets have network connectivity and so we can say the two VPC's can peer.
+ 
+- OS have two IP, public IP and private IP. Public IP you give to your clients so that they can connect to your application over public Internet. Private Ip is used mostly for internal communication of services. Normally in a company, fofr one app we have many OS running, may be for front end, backend, db, microservices, etc. But if you want every OS can connect to each other using private channel then we can use private IP.  
