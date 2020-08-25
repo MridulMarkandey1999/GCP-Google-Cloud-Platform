@@ -82,3 +82,15 @@ gcloud beta compute --project=devproject-123456789 instances create myos1 --zone
 - For this we want the NIC(Network Interface Card) to be detached from the VM's and connect it to Subnet in which VM's are running so that the two Subnets have network connectivity and so we can say the two VPC's can peer.
  
 - OS have two IP, public IP and private IP. Public IP you give to your clients so that they can connect to your application over public Internet. Private Ip is used mostly for internal communication of services. Normally in a company, fofr one app we have many OS running, may be for front end, backend, db, microservices, etc. But if you want every OS can connect to each other using private channel then we can use private IP.  
+
+- Every VPC have their own firewall. So allow traffic (icmp traffic) in firewall of both the vpc's. Now both the VM's can ping using public Ip. But we don't want to use external network. We want to use Google internal private network. So for that we need to enable VPC peeing for both the VPC's in both the projects. So after you enable from both the ends you can exchange data, or you can ping using your private IP. Behind the scene a lot of high end setup has been configured for us.
+
+### VPC PEERING USE-CASE:
+
+1. Security and minimize latency and increase performance.
+
+2. If you have one app and you don't want to expose backend to the world. Ypu only want to expose the front end.
+
+3. Security compliance like company don't want to put their data in some region. So put their backend database in their region and launch the front end in multiple different VPC of different regions.
+
+**NOTE: GCP Interconnect: It is one service in GCP to connect your on-premises instances (or resources) to GCP cloud**
