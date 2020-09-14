@@ -27,7 +27,9 @@
     gcloud projects create devproject-1029384756 --name=devproject
 
     gcloud projects create prodproject-1029384756 --name=prodproject
+    
 ```
+![](/screenshots/Screenshot(56).png)
 - Enable billing for both projects. Go to billing section and set billing account.
 
 - Create VPC in both brojects. In devproject create VPC in Singapore region. In prodproject create vpc in US region.
