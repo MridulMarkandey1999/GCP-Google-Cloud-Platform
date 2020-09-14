@@ -160,3 +160,4 @@ Congracts..!! You have successfully deployed your front-end app on Kubernetes cl
 - SQL (MYSQL Database service)
 - VPC (Virtual Private Network) and VPC Network Peering
 - Projects, Regions, Zones, firewall rules
+ 
