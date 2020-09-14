@@ -30,7 +30,12 @@
     
 ```
 ![](/screenshots/Screenshot(56).png)
-- Enable billing for both projects. Go to billing section and set billing account.
+
+- Enable billing for both projects. Go to billing section and set billing account.![](/screenshots/Screenshot(56).png)
+
+![](/screenshots/Screenshot(57).png)
+
+![](/screenshots/Screenshot(58).png)
 
 - Create VPC in both brojects. In devproject create VPC in Singapore region. In prodproject create vpc in US region.
 
